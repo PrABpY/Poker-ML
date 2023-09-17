@@ -2,7 +2,27 @@ import pandas as pd
 import numpy as np
 import xlsxwriter
 
-def rank(number,symbol):
+def symbol_to_number(csymbol):
+	en = {'♠':0.02,'♦':0.03,'♥':0.09,'♣':0.01}
+	for i in range(len(csymbol)):
+		if csymbol[i] in en :
+			csymbol[i] = en[csymbol[i]]
+	return sorted(list(csymbol))
+
+def rank_number(number,symbol):
+	num_sym = sum(symbol_to_number(symbol))
+	if len(number) == max(number)-min(number) and len(set(number)) == len(number):
+		if len(set(symbol)) == 1:
+			if max(ranks) == 14:
+				return 14.0+num_sym
+			return 2.0+num_sym
+		return 4.0+num_sym
+	if len(set(symbol)) == 1:
+		return 1.0+num_sym
+	score = float(sum([number.count(i) for i in number]))
+	return score+num_sym
+
+def rank_type(number,symbol):
 	if len(number) == max(number)-min(number) and len(set(number)) == len(number):
 		if len(set(symbol)) == 1:
 			if max(ranks) == 14:
@@ -45,7 +65,7 @@ df = pd.read_excel('poker.xlsx',sheet_name='dataset').values.tolist()
 row = 0
 col = 0
 for card in df :
-	print(rank(encode(split_card(card)[0]),split_card(card)[1]))
-	worksheet.write(row,0,rank(encode(split_card(card)[0]),split_card(card)[1]))
+	print(rank_number(encode(split_card(card)[0]),split_card(card)[1]))
+	worksheet.write(row,0,rank_number(encode(split_card(card)[0]),split_card(card)[1]))
 	row += 1
 workbook.close()
