@@ -9,6 +9,10 @@ def Flop(card):
 	Flop = random.choices(card,k = 3)
 	return Flop
 
+def table(card):
+	table = random.choices(card,k = 5)
+	return table
+
 if __name__ == '__main__' :
 	df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
 	card = sum(df,[])
