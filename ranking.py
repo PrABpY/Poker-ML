@@ -23,7 +23,7 @@ def rank_number(number,symbol):
 	return score+num_sym
 
 def rank_type(number,symbol):
-	if len(number) == max(number)-min(number) and len(set(number)) == len(number):
+	if len(number)-1 == max(number)-min(number) and len(set(number)) == len(number):
 		if len(set(symbol)) == 1:
 			if max(ranks) == 14:
 				return 'Royal flush'
@@ -59,13 +59,15 @@ def split_card(card):
 		number.append(i.replace(i[-1],""))
 	return number,symbol
 
-workbook = xlsxwriter.Workbook('dataset1.xlsx')
-worksheet = workbook.add_worksheet('dataset')
-df = pd.read_excel('poker.xlsx',sheet_name='dataset').values.tolist()
-row = 0
-col = 0
-for card in df :
-	print(rank_number(encode(split_card(card)[0]),split_card(card)[1]))
-	worksheet.write(row,0,rank_number(encode(split_card(card)[0]),split_card(card)[1]))
-	row += 1
-workbook.close()
+if __name__ == '__main__' :
+	workbook = xlsxwriter.Workbook('dataset2.xlsx')
+	worksheet = workbook.add_worksheet('dataset')
+	df = pd.read_excel('dataset1.xlsx',sheet_name='dataset').values.tolist()
+	row = 0
+	col = 0
+	for card in df :
+		print(row+2,rank_number(encode(split_card(card)[0]),split_card(card)[1]),rank_type(encode(split_card(card)[0]),split_card(card)[1]))
+		worksheet.write(row,0,rank_number(encode(split_card(card)[0]),split_card(card)[1]))
+		worksheet.write(row,1,rank_type(encode(split_card(card)[0]),split_card(card)[1]))
+		row += 1
+	workbook.close()

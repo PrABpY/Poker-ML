@@ -4,7 +4,8 @@ import xlsxwriter
 
 workbook = xlsxwriter.Workbook('dataset1.xlsx')
 worksheet = workbook.add_worksheet('dataset')
-row = 0
+row = 1
+worksheet.write(0,0,'H')
 for num in range(100):
 	df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
 	card = sum(df,[])

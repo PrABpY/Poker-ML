@@ -4,12 +4,6 @@ from sklearn.preprocessing import StandardScaler,LabelEncoder
 from sklearn.model_selection import train_test_split
 
 df = pd.read_excel('poker.xlsx',sheet_name='dataset')
-encode = LabelEncoder()
-df['H1'] = encode.fit_transform(df['H1'])
-df['H2'] = encode.fit_transform(df['H2'])
-df['H3'] = encode.fit_transform(df['H3'])
-df['H4'] = encode.fit_transform(df['H4'])
-df['H5'] = encode.fit_transform(df['H5'])
 # df['Rank'] = encode.fit_transform(df['Rank'])
 
 scale = StandardScaler()
