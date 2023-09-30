@@ -13,19 +13,19 @@ def rank_number(number,symbol):
 	num_sym = sum(symbol_to_number(symbol))
 	if len(number)-1 == max(number)-min(number) and len(set(number)) == len(number):
 		if len(set(symbol)) == 1:
-			if max(ranks) == 14:
+			if max(number) == 14:
 				return 14.0+num_sym
-			return 2.0+num_sym
-		return 4.0+num_sym
+			return 10.0+num_sym
+		return 8.0+num_sym
 	if len(set(symbol)) == 1:
-		return 1.0+num_sym
+		return 6.0+num_sym
 	score = float(sum([number.count(i) for i in number]))
 	return score+num_sym
 
 def rank_type(number,symbol):
 	if len(number)-1 == max(number)-min(number) and len(set(number)) == len(number):
 		if len(set(symbol)) == 1:
-			if max(ranks) == 14:
+			if max(number) == 14:
 				return 'Royal flush'
 			return 'Straight flush'
 		return 'Straight'

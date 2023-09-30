@@ -19,7 +19,7 @@ y = df[['Rank']]
 # y = scale.fit_transform(y)
 # print(y)
 
-x_train,x_test,y_train,y_test = train_test_split(x1,y,test_size=0.3,random_state = 42)
+x_train,x_test,y_train,y_test = train_test_split(x1,y,test_size=0.1,random_state = 42)
 
 K = 3
 model = KNeighborsClassifier(n_neighbors = K)
@@ -29,7 +29,6 @@ table = ran.table()
 print(table)
 x_pre = [table]
 x_pre = ranking.rank_number(ranking.encode(ranking.split_card(x_pre[0])[0]),ranking.split_card(x_pre[0])[1])
-x_pre = (0.5*3.14+x_pre)**0.5
 print(x_pre)
 y_pre = model.predict([[x_pre]])
 
