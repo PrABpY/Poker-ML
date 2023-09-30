@@ -29,7 +29,7 @@ table = ran.table()
 print(table)
 x_pre = [table]
 x_pre = ranking.rank_number(ranking.encode(ranking.split_card(x_pre[0])[0]),ranking.split_card(x_pre[0])[1])
-x_pre = (0.5*3.14+x_pre)**2
+x_pre = (0.5*3.14+x_pre)**0.5
 print(x_pre)
 y_pre = model.predict([[x_pre]])
 

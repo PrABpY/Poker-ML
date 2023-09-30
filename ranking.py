@@ -11,7 +11,7 @@ def symbol_to_number(csymbol):
 
 def rank_number(number,symbol):
 	num_sym = sum(symbol_to_number(symbol))
-	if len(number) == max(number)-min(number) and len(set(number)) == len(number):
+	if len(number)-1 == max(number)-min(number) and len(set(number)) == len(number):
 		if len(set(symbol)) == 1:
 			if max(ranks) == 14:
 				return 14.0+num_sym
