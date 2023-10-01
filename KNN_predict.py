@@ -12,8 +12,9 @@ df = pd.read_excel('poker.xlsx',sheet_name='dataset')
 encode = LabelEncoder()
 
 scale = StandardScaler()
-x1 = df[['Position1']]
-x2 = df[['Position2']]
+x1 = df[['Position1','Position2']]
+a = df[['Position1']]
+b = df[['Position2']]
 # x1 = scale.fit_transform(x1)
 # x2 = scale.fit_transform(x2)
 # print(x)
@@ -21,7 +22,7 @@ y = encode.fit_transform(df['Rank'])
 # y = scale.fit_transform(y)
 # print(y)
 
-x_train,x_test,y_train,y_test = train_test_split(x1,y,test_size=0.3,random_state = 42)
+x_train,x_test,y_train,y_test = train_test_split(x1,y,test_size=0.5,random_state = 42)
 
 K = 2
 model = KNeighborsClassifier(n_neighbors = K)
@@ -32,9 +33,9 @@ print(table)
 x_pre = [table]
 x_pre = ranking.rank_number(ranking.encode(ranking.split_card(x_pre[0])[0]),ranking.split_card(x_pre[0])[1])
 print(x_pre)
-y_pre = model.predict([[x_pre]])
+y_pre = model.predict([[x_pre,x_pre]])
 
-# plt.scatter(x1,x2,s = 2)
+plt.scatter(a,b,s = 2)
 
 print('Rank :',encode.inverse_transform([y_pre])[0])
 print('Accuracy :','{:.2f}'.format(model.score(x_test,y_test)))

@@ -4,27 +4,32 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 
-df = pd.read_excel('poker.xlsx', sheet_name='dataset')
-scale = StandardScaler()
+def find_k(df):
+    scale = StandardScaler()
 
-X = df[['Position1']]
-y = df[['Rank']]
+    X = df[['Position1','Position2']]
+    y = df[['Rank']]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=42)
 
-k_values = list(range(1, 21))
-accuracy_scores = []
+    k_values = list(range(1, 21))
+    accuracy_scores = []
 
-for k in k_values:
-    knn = KNeighborsClassifier(n_neighbors=k)
-    knn.fit(X_train, y_train.values.ravel())
-    accuracy = knn.score(X_test, y_test)
-    accuracy_scores.append(accuracy)
+    for k in k_values:
+        knn = KNeighborsClassifier(n_neighbors=k)
+        knn.fit(X_train, y_train.values.ravel())
+        accuracy = knn.score(X_test, y_test)
+        accuracy_scores.append(accuracy)
 
-plt.figure(figsize=(10, 6))
-plt.plot(k_values, accuracy_scores, marker='o', linestyle='-')
-plt.title('Accuracy vs. K Value for KNN')
-plt.xlabel('K Value')
-plt.ylabel('Accuracy')
-plt.grid(True)
-plt.show()
+    return k_values,accuracy_scores
+
+if __name__ == '__main__' :
+    df = pd.read_excel('poker.xlsx', sheet_name='dataset')
+    k_values,accuracy_scores = find_k(df)
+    plt.figure(figsize=(10, 6))
+    plt.plot(k_values, accuracy_scores, marker='o', linestyle='-')
+    plt.title('Accuracy vs. K Value for KNN')
+    plt.xlabel('K Value')
+    plt.ylabel('Accuracy')
+    plt.grid(True)
+    plt.show()

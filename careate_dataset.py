@@ -65,13 +65,13 @@ worksheet = workbook.add_worksheet('dataset')
 row = 1
 rate = 0
 worksheet.write(0,0,'H')
-while row <= 100:
+while row <= 6:
 	# print(card)
 	table = ran.table()
 	if len(set(table)) == 5 :
 		ranking = rank_type(encode(split_card(table)[0]),split_card(table)[1])
-		if ranking != 'High card' and ranking != 'One pair' and ranking != 'Two pair' and ranking != 'Three of a kind' :
-			print("["+str(rate+1)+"]"+"table :",table)
+		if ranking == 'Straight flush' :
+			print("["+str(rate+1)+"]"+"table :",table,"num =",row)
 			for j in range(5):
 				worksheet.write(row,j,table[j])
 			worksheet.write(row,5,rank_number(encode(split_card(table)[0]),split_card(table)[1]))
@@ -79,4 +79,5 @@ while row <= 100:
 			row += 1
 	rate += 1
 workbook.close()
+input()
  
