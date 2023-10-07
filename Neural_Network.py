@@ -11,7 +11,7 @@ y = df['Rank']
 
 x_train, x_test, y_train, y_test = train_test_split(x, y,test_size = 0.3, random_state=0)
 
-model = MLPClassifier(hidden_layer_sizes=(3, 4),activation='relu',solver='lbfgs',random_state=0)
+model = MLPClassifier(hidden_layer_sizes=(4, 5),activation='relu',solver='lbfgs',random_state=0)
 
 model.fit(x_train, y_train)
 table = ran.table()

@@ -14,6 +14,11 @@ def table():
 	table = random.choices(sum(df,[]),k = 5)
 	return table
 
+def table_all():
+	df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
+	table = random.choices(sum(df,[]),k = 7)
+	return table
+
 if __name__ == '__main__' :
 	df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
 	card = sum(df,[])

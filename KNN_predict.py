@@ -13,8 +13,8 @@ encode = LabelEncoder()
 
 scale = StandardScaler()
 x1 = df[['Position1','Position2']]
-a = df[['Position1']]
-b = df[['Position2']]
+a = scale.fit_transform(df[['Position1']])
+b = scale.fit_transform(df[['Position2']])
 # x1 = scale.fit_transform(x1)
 # x2 = scale.fit_transform(x2)
 # print(x)
@@ -24,7 +24,7 @@ y = encode.fit_transform(df['Rank'])
 
 x_train,x_test,y_train,y_test = train_test_split(x1,y,test_size=0.5,random_state = 42)
 
-K = 2
+K = 5
 model = KNeighborsClassifier(n_neighbors = K)
 model.fit(x_train,y_train)
 

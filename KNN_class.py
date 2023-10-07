@@ -17,7 +17,7 @@ encode = LabelEncoder()
 X = df[['Position1','Position2']]
 y = encode.fit_transform(df['Rank'])
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=0)
 
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
@@ -27,14 +27,14 @@ pca = PCA(n_components=2)
 X_train_pca = pca.fit_transform(X_train)
 X_test_pca = pca.transform(X_test)
 
-k = 2 
+k = 5
 knn = KNeighborsClassifier(n_neighbors=k)
 knn.fit(X_train_pca, y_train)
 
 y_pred = knn.predict(X_test_pca)
 
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy of KNN with {k} neighbors: {accuracy*100:.4f}%')
+print(f'Accuracy of KNN : {accuracy*100:.4f}%')
 
 k_values,accuracy_scores = find_K.find_k(df)
 

@@ -2,6 +2,7 @@ import Handing_Flop as ran
 import pandas as pd
 import xlsxwriter
 import numpy as np
+import itertools
 
 def symbol_to_number(csymbol):
 	en = {'♠':0.02,'♦':0.03,'♥':0.09,'♣':0.01}
@@ -60,24 +61,42 @@ def split_card(card):
 		number.append(i.replace(i[-1],""))
 	return number,symbol
 
+def get_best_card(card):
+	rank = {'Royal flush':0,
+	'Straight flush':1,
+	'Straight':2,
+	'Flush':3,
+	'Four of a kind':4,
+	'Full house':5,
+	'Three of a kind':6,
+	'Two pair':7,
+	'One pair':8,
+	'High card':9}
+	all_hand_combos = list(itertools.combinations(card, 5))
+	test_all = []
+	for best in range(len(all_hand_combos)):test_all.append(rank[rank_type(encode(split_card(list(all_hand_combos[best]))[0]),split_card(list(all_hand_combos[best]))[1])])
+	top_rank = min(test_all)
+	for num in range(len(test_all)):
+		if test_all[num] == top_rank:
+			return list(all_hand_combos[num])
 workbook = xlsxwriter.Workbook('dataset1.xlsx')
 worksheet = workbook.add_worksheet('dataset')
-row = 1
+row = 0
 rate = 0
-worksheet.write(0,0,'H')
-while row <= 6:
-	# print(card)
-	table = ran.table()
-	if len(set(table)) == 5 :
-		ranking = rank_type(encode(split_card(table)[0]),split_card(table)[1])
-		if ranking == 'Straight flush' :
-			print("["+str(rate+1)+"]"+"table :",table,"num =",row)
+while row <= 20:
+	table = ran.table_all()
+	# print(table)
+	if len(set(table)) == 7 :
+		card = get_best_card(table)
+		ranking = rank_type(encode(split_card(card)[0]),split_card(card)[1])
+		# print(card,ranking)
+		if ranking == 'Royal flush':
+			print("["+str(rate+1)+"]"+"table :",card,"num =",row)
 			for j in range(5):
-				worksheet.write(row,j,table[j])
-			worksheet.write(row,5,rank_number(encode(split_card(table)[0]),split_card(table)[1]))
-			worksheet.write(row,6,rank_type(encode(split_card(table)[0]),split_card(table)[1]))
+				worksheet.write(row,j,card[j])
+			worksheet.write(row,5,rank_number(encode(split_card(card)[0]),split_card(card)[1]))
+			worksheet.write(row,6,ranking)
 			row += 1
 	rate += 1
 workbook.close()
-input()
- 
+# print(get_best_card(ran.table_all()))
