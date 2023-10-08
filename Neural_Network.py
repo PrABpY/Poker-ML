@@ -4,14 +4,14 @@ import pandas as pd
 import Handing_Flop as ran
 import ranking 
 
-df = pd.read_excel('poker.xlsx', sheet_name='dataset')
+df = pd.read_excel('poker.xlsx',sheet_name = 'dataset')
 
 x = df[['Encode_sum','Position1','Position2']]
 y = df['Rank']
 
-x_train, x_test, y_train, y_test = train_test_split(x, y,test_size = 0.3, random_state=0)
+x_train,x_test,y_train,y_test = train_test_split(x,y,test_size = 0.3,random_state = 0)
 
-model = MLPClassifier(hidden_layer_sizes=(4, 5),activation='relu',solver='lbfgs',random_state=0)
+model = MLPClassifier(hidden_layer_sizes = (4,5),activation = 'relu',solver = 'lbfgs',random_state = 0)
 
 model.fit(x_train, y_train)
 table = ran.table()
