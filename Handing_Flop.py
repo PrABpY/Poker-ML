@@ -25,11 +25,11 @@ def table_all():
 			return table
 
 if __name__ == '__main__' :
-	# df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
-	# card = sum(df,[])
-	# # print(card)
-	# Hand = Hand(card)
-	# print("Hand :",Hand)
-	# for use in Hand : card.remove(use)
-	# Flop = Flop(card)
-	print(table())
+	df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
+	card = sum(df,[])
+	# print(card)
+	Hand = Hand(card)
+	print("Hand :",Hand)
+	for use in Hand : card.remove(use)
+	Flop = Flop(card)
+	# print(table())

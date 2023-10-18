@@ -2,11 +2,19 @@ import numpy as np
 import cv2
 from mss import mss
 from PIL import Image
+import pandas as pd
+
+df = pd.read_excel('poker.xlsx',sheet_name='part').values.tolist()
+card = sum(df,[])
 
 bounding_box = {'top': 500, 'left': 750, 'width': 300, 'height': 300}
 
 sct = mss()
-template = [cv2.imread('1.png',0),cv2.imread('2.png',0)]
+template = []
+
+for i in card:
+    template.append(cv2.imread('img/vertical'+i+'.png',0))
+
 w, h = (30,30)
 cla = {0:'♠',1:'♠'}
 

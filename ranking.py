@@ -4,7 +4,7 @@ import xlsxwriter
 import itertools
 
 def symbol_to_number(csymbol):
-	en = {'♠':0.02,'♦':0.03,'♥':0.09,'♣':0.01}
+	en = {'♠':0.02,'♦':0.03,'♥':0.09,'♣':0.01,'o':0}
 	for i in range(len(csymbol)):
 		if csymbol[i] in en :
 			csymbol[i] = en[csymbol[i]]
