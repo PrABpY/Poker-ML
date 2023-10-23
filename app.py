@@ -131,7 +131,7 @@ status_frame.grid(row = 0,column = 1,sticky=N,pady = 20)
 status_frame_top = tk.Frame(status_frame)
 status_frame_top.grid(row = 0,column = 0,sticky=N,pady = 5)
 
-tk.Label(status_frame_top, text="Best Card :", font=('Helvetica', 16)).grid(row = 0,column = 0,sticky=W,padx = 20)
+tk.Label(status_frame_top, text="Best Rank :", font=('Helvetica', 16)).grid(row = 0,column = 0,sticky=W,padx = 20)
 bast_card = tk.Label(status_frame_top, text="", font=('Helvetica', 25))
 bast_card.grid(row = 1,column = 0,sticky=W,padx = 20)
 tk.Label(status_frame_top, text="_________________________", font=('Helvetica', 16)).grid(row = 2,column = 0,sticky=W,padx = 20)
@@ -176,10 +176,10 @@ tk.Label(status_frame_bottom, text=" ").grid(row = 10,column = 1,sticky=N,padx =
 status_frame_bottoms = tk.Frame(status_frame)
 status_frame_bottoms.grid(row = 2,column = 0,sticky=N)
 
-tk.Label(status_frame_bottoms, text="Final Rank", font=('Helvetica', 16)).grid(row = 0,column = 0,padx = 20)
+tk.Label(status_frame_bottoms, text="Final Card", font=('Helvetica', 16)).grid(row = 0,column = 0,padx = 20)
 bast_cards = tk.Label(status_frame_bottoms, text="", font=('Helvetica', 10))
-bast_cards.grid(row = 1,column = 0,padx = 20)
-tk.Label(status_frame_bottoms, text="_________________________", font=('Mitr', 16)).grid(row = 3,column = 0,sticky=N)
+bast_cards.grid(row = 1,column = 0,padx = 10)
+tk.Label(status_frame_bottoms, text="___________________________________", font=('Mitr', 16)).grid(row = 3,column = 0,sticky=N,padx = 13)
 bast_cards_final = tk.Label(status_frame_bottoms, text="", font=('Helvetica', 25))
 bast_cards_final.grid(row = 2,column = 0,padx = 20)
 

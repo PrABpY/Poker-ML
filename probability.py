@@ -24,7 +24,8 @@ def porb(table):
             all_card.append(tables)
             # print(tables)
             pre = ranking.get_best_card(tables)
-            c_card.append(pre)
+            # c_card.append(pre)
+            c_card = all_card
             pre_card = ranking.rank_type(ranking.encode(ranking.split_card(pre)[0]),ranking.split_card(pre)[1])
             # print(tables,pre,pre_card)
             card_type.append(pre_card)

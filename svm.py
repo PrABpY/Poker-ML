@@ -12,10 +12,6 @@ y = df['Rank']
 
 X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.5,random_state = 0)
 
-# scaler = StandardScaler()
-# X_train = scaler.fit_transform(X_train)
-# X_test = scaler.transform(X_test)
-
 model = SVC(kernel = 'rbf',gamma = 1)
 model.fit(X_train,y_train)
 
