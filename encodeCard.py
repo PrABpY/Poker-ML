@@ -80,25 +80,3 @@ def get_best_card(card):
 		if test_all[num] == top_rank:
 			return list(all_hand_combos[num])
 
-if __name__ == '__main__' :
-	workbook = xlsxwriter.Workbook('dataset1.xlsx')
-	worksheet = workbook.add_worksheet('dataset')
-	row = 0
-	rate = 0
-	while row <= 20:
-		table = ran.table_all()
-		# print(table)
-		if len(set(table)) == 7 :
-			card = get_best_card(table)
-			ranking = rank_type(encode(split_card(card)[0]),split_card(card)[1])
-			# print(card,ranking)
-			if ranking == 'Royal flush':
-				print("["+str(rate+1)+"]"+"table :",card,"num =",row)
-				for j in range(5):
-					worksheet.write(row,j,card[j])
-				worksheet.write(row,5,rank_number(encode(split_card(card)[0]),split_card(card)[1]))
-				worksheet.write(row,6,ranking)
-				row += 1
-		rate += 1
-	workbook.close()
-	# print(get_best_card(ran.table_all()))

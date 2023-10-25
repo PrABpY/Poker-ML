@@ -78,16 +78,3 @@ def get_best_card(card):
 	for num in range(len(test_all)):
 		if test_all[num] == top_rank:
 			return list(all_hand_combos[num])
-
-if __name__ == '__main__' :
-	workbook = xlsxwriter.Workbook('dataset2.xlsx')
-	worksheet = workbook.add_worksheet('dataset')
-	df = pd.read_excel('dataset1.xlsx',sheet_name='dataset').values.tolist()
-	row = 0
-	col = 0
-	for card in df :
-		print(row+2,rank_number(encode(split_card(card)[0]),split_card(card)[1]),rank_type(encode(split_card(card)[0]),split_card(card)[1]))
-		worksheet.write(row,0,rank_number(encode(split_card(card)[0]),split_card(card)[1]))
-		worksheet.write(row,1,rank_type(encode(split_card(card)[0]),split_card(card)[1]))
-		row += 1
-	workbook.close()
