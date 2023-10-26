@@ -2,7 +2,7 @@
  For project machine learning
  
 ## Dataset
-	file poker.xlxs sheetname : "dataset"
+ file poker.xlxs sheetname : "dataset"
 
  H1 | H1 | H1 | H1 | H1 | Encode_sum | Position1 | Position2 | Rank |
 ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
