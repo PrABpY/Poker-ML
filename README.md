@@ -2,6 +2,8 @@
  For project machine learning
  
 ## Dataset
+	file poker.xlxs sheetname : "dataset"
+
  H1 | H1 | H1 | H1 | H1 | Encode_sum | Position1 | Position2 | Rank |
 ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
 K♠ | 6♦ | 6♣ | 3♠ | 2♠ | 7.1 | 7.436306977 | 7.892193044 | One pair |
