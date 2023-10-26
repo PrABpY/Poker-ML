@@ -14,7 +14,7 @@ K♠ | 6♦ | 6♣ | 3♠ | 2♠ | 7.1 | 7.436306977 | 7.892193044 | One pair |
 J♣ | K♣ | 7♣ | 6♥ | 9♦ | 5.15 | 5.31652783 | 5.242784717 | High card |
 
 	df = pd.read_excel('poker.xlsx',sheet_name = 'dataset')
-	
+
 	X = df[['Position1','Position2']]
 	y = df['Rank']
 
@@ -30,7 +30,7 @@ J♣ | K♣ | 7♣ | 6♥ | 9♦ | 5.15 | 5.31652783 | 5.242784717 | High card |
 	from sklearn.neighbors import KNeighborsClassifier
 	from sklearn.model_selection import train_test_split
 	from sklearn.ensemble import VotingClassifier
-	
+
 	X_train, X_test, y_train, y_test = train_test_split(X,y,test_size = 0.3)
 
 •	SVM (Support vector machine)
@@ -51,8 +51,9 @@ J♣ | K♣ | 7♣ | 6♥ | 9♦ | 5.15 | 5.31652783 | 5.242784717 | High card |
 			 ('knn',KNeighborsClassifier(n_neighbors = 5)),
 			 ('ann',MLPClassifier(hidden_layer_sizes = (4,5),activation = 'relu',solver = 'lbfgs',random_state = 0)),
 			 ('baye',GaussianNB())]
+			 
+	voting = VotingClassifier(all_model,voting = 'hard')
 
-voting = VotingClassifier(all_model,voting = 'hard')
 
 <img src="ui/knn.png" alt="Alt text" title="Optional title">
 
