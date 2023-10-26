@@ -1,6 +1,7 @@
 # Poker-ML
  For project machine learning
- 
+ <img src="ui/Calculator.jpg" alt="Alt text" title="Optional title">
+
 ## Dataset
  file poker.xlxs sheetname : "dataset"
 
